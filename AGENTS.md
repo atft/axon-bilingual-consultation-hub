@@ -28,3 +28,9 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Website architecture
+- Keep bilingual copy and contact validation in a shared browser-safe content module; this keeps both languages and rule tests aligned.
+- Store the active language in a validated optional search parameter and persist the preference after hydration; this gives each language accurate route metadata without hydration mismatches.
+- The corporate website uses explicitly requested single-page anchor navigation; keep its sections modular and the global visual system in the entry stylesheet.
+- Consultation requests open a prefilled email to the published contact address; do not claim server delivery without a connected sending service.

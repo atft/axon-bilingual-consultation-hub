@@ -1,23 +1,37 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { content, type Language } from "@/lib/axon-content";
+import { LanguageProvider } from "@/components/axon/language";
+import { Website } from "@/components/axon/website";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  validateSearch: (search: Record<string, unknown>): { lang?: Language } =>
+    search["lang"] === "en" ? { lang: "en" } : search["lang"] === "ar" ? { lang: "ar" } : {},
+  head: ({ match }) => {
+    const t = content[match.search.lang ?? "ar"];
+    return {
+      meta: [
+        { title: t.title },
+        { name: "description", content: t.description },
+        { property: "og:title", content: t.title },
+        { property: "og:description", content: t.description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
+      ],
+    };
+  },
   component: Index,
 });
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const { lang = "ar" } = Route.useSearch();
+  const navigate = useNavigate({ from: "/" });
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
+    <LanguageProvider
+      lang={lang}
+      onChange={(next) =>
+        navigate({ to: "/", search: { lang: next }, replace: true, resetScroll: false })
+      }
     >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+      <Website />
+    </LanguageProvider>
   );
 }

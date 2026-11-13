@@ -34,3 +34,4 @@ use the editor.
 - Store the active language in a validated optional search parameter and persist the preference after hydration; this gives each language accurate route metadata without hydration mismatches.
 - The corporate website uses explicitly requested single-page anchor navigation; keep its sections modular and the global visual system in the entry stylesheet.
 - Consultation requests open a prefilled email to the published contact address; do not claim server delivery without a connected sending service.
+- Netlify deploys use netlify.toml with NITRO_PRESET=netlify (ignored inside Lovable builds); never add a public/_redirects SPA fallback, since server rendering handles every path.

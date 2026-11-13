@@ -1,0 +1,9 @@
+# Netlify deployment: builds the TanStack Start app with Nitro's Netlify preset
+# (server rendering runs as a Netlify Function; static files are served from dist).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NITRO_PRESET = "netlify"
+  NODE_VERSION = "22"

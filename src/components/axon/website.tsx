@@ -34,9 +34,8 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "./language";
 import { Contact } from "./contact";
 import { sectionIds } from "@/lib/axon-content";
-import logo from "@/assets/axon-logo.png.asset.json";
-import odoo from "@/assets/odoo.png.asset.json";
-import profile from "@/assets/axon-company-profile.pdf.asset.json";
+import logo from "@/assets/axon-logo.png";
+import odoo from "@/assets/odoo.png";
 import network from "@/assets/neural-network.jpg";
 const serviceIcons = [
   Layers3,
@@ -65,7 +64,7 @@ function Brand({ light = false }: { light?: boolean }) {
       aria-label="AXON Digital Transformation"
       className={`brand ${light ? "brand-light" : ""}`}
     >
-      <img src={logo.url} alt="AXON Digital Transformation" width={1920} height={1047} />
+      <img src={logo} alt="AXON Digital Transformation" width={1920} height={1047} />
     </a>
   );
 }
@@ -223,7 +222,7 @@ function About() {
             <p className="body-copy mt-6">{t.about}</p>
             <p className="body-copy mt-4">{t.about2}</p>
             <Button asChild variant="link" className="mt-5 px-0">
-              <a href={profile.url} target="_blank" rel="noreferrer">
+              <a href="/company-profile.pdf" target="_blank" rel="noreferrer">
                 {t.profile}
                 <Download size={16} />
               </a>
@@ -237,7 +236,7 @@ function About() {
               </span>
               <Network size={17} />
             </div>
-            <img src={odoo.url} alt="Odoo ERP" width={1376} height={768} loading="lazy" />
+            <img src={odoo} alt="Odoo ERP" width={1376} height={768} loading="lazy" />
             <div className="visual-facts">
               <span>
                 <strong>2025</strong>
@@ -399,7 +398,7 @@ function Industries() {
             <h3>{t.construction}</h3>
             <p>{t.constructionText}</p>
           </div>
-          <a href={profile.url} target="_blank" rel="noreferrer" aria-label={t.profile}>
+          <a href="/company-profile.pdf" target="_blank" rel="noreferrer" aria-label={t.profile}>
             <ArrowUpRight size={24} />
           </a>
         </div>

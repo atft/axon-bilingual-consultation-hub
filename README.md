@@ -4,8 +4,6 @@ Implement exactly the screenshot and nothing else
 
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://axon-bilingual-consultation-hub.lovable.app
-
 ## Build with Lovable
 
 Continue developing this project in the [Lovable editor](https://lovable.dev/projects/64ca4c68-a56c-4d3a-ba4c-72de91f78e84).
